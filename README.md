@@ -35,6 +35,26 @@ generateSlug(text: string, options?: {
 ```
   isSlug(text: string): boolean  <-- to check if a slug
 ```
+## Examples
+
+importing `SlugService` in `app.service.ts`:
+```
+  import { Injectable } from '@nestjs/common';
+  import { SlugService } from 'nestjs-slug'; <---
+
+  @Injectable()
+  export class AppService {
+
+    constructor(
+      private slug:SlugService  <---
+    ){}
+
+    generateUrlSlug(){
+      this.slug.generateSlug("iphone 14 pro max black")
+    }
+  }
+```
+
 ## License
 
 nestjs-slug is [MIT licensed](LICENSE).
