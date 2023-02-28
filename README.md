@@ -35,5 +35,8 @@ generateSlug(text: string, options?: {
 ```
   isSlug(text: string): boolean  <-- to check if a slug
 ```
+## License
+
+nestjs-slug is [MIT licensed](LICENSE).
 
 
