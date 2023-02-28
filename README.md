@@ -45,13 +45,14 @@ importing `SlugService` in `app.service.ts`:
   @Injectable()
   export class AppService {
 
+    slug:string = "";
+
     constructor(
       private slug:SlugService  <---
     ){}
 
-    generateUrlSlug(){
-      this.slug.generateSlug("iphone 14 pro max black")
-    }
+    this.slug = this.slug.generateSlug("iphone 14 pro max black")
+    
   }
 ```
 
