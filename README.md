@@ -48,10 +48,10 @@ importing `SlugService` in `app.service.ts`:
     slug:string = "";
 
     constructor(
-      private slug:SlugService  <---
+      private slugService: SlugService  <---
     ){}
 
-    this.slug = this.slug.generateSlug("iphone 14 pro max black")
+    this.slug = this.slugService.generateSlug("iphone 14 pro max black")
     
   }
 ```
