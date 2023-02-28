@@ -1,10 +1,11 @@
 {
   "name": "nestjs-slug",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "nestjs-slug is a simple library to create a slug from string!",
   "author": {
     "name": "AAVision"
   },
+  "type":"module",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -39,19 +40,14 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "peerDependencies": {
-    "@nestjs/common": "^8.2.0",
-    "@nestjs/core": "^8.2.0",
-    "@nestjs/platform-express": "^8.2.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "@nestjs/common": ">8.2.0",
+    "@nestjs/core": ">8.2.0",
+    "@nestjs/platform-express": ">8.2.0"
   },
   "dependencies": {
-    "@nestjs/common": "^9.3.9",
-    "@nestjs/core": "^9.3.9",
-    "@nestjs/platform-express": "^9.3.9",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0",
-    "shx": "^0.3.4"
+    "@nestjs/common": ">8.2.0",
+    "@nestjs/core": ">8.2.0",
+    "@nestjs/platform-express": ">8.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
