@@ -1,11 +1,11 @@
 {
   "name": "nestjs-slug",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "nestjs-slug is a simple library to create a slug from string!",
   "author": {
     "name": "AAVision"
   },
-  "type":"module",
+  "type": "module",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
