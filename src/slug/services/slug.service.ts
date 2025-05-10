@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 
 interface SlugOptions {
-  seperator?: string;
+  separator?: string;
   lowerCase?: boolean;
   upperCase?: boolean;
   length?: number;
   trim?: boolean;
   timestamp?: boolean;
-  trimBySepator?: number;
+  trimBySeparator?: number;
   removeSpecialCharacters?: boolean;
 }
 
@@ -20,41 +20,37 @@ export class SlugService {
     return /\\s/g.test(text);
   }
 
-  generateSlug(text: string, options?: SlugOptions): string {
-
+  generate(text: string, options?: SlugOptions): string {
     options?.removeSpecialCharacters ? text = text.replace(/[^\w ]/g, '') : text;
-    var slug: string = text;
-    let date = new Date();
+    let slug = text;
 
     options?.trim ? slug = slug.replace(/^\s+|\s+$/gm, '') : slug;
     options?.lowerCase ? slug = slug.toLowerCase() : slug;
     options?.upperCase ? slug = slug.toUpperCase() : slug;
     options?.length ? slug = slug.substring(0, options.length) : slug;
-    options?.timestamp ? slug = slug + ` ${date.getDate()} ${date.getMonth()} ${date.getFullYear()}` : slug;
 
-    slug = options?.seperator ? slug.replace(/ /g, options?.seperator) : slug.replace(/ /g, '-');
+    if (options?.timestamp) {
+      const date = new Date();
+      slug += ` ${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()}`;
+    }
 
-    if (options?.trimBySepator) {
-      let trimIndex = options?.trimBySepator;
-      const indexes = this.findIndexes(slug, !options?.seperator ? '-' : options?.seperator);
-      if (indexes.length > trimIndex) {
-        slug = slug.substring(0, indexes[trimIndex - 1]);
+    const separator = options?.separator ?? '-';
+    slug = slug.split(' ').join(separator);
+
+    if (options?.trimBySeparator) {
+      const indexes: number[] = [];
+      for(let i=0; i< slug.length; i++){
+        if (slug[i] === separator) {
+          indexes.push(i);
+        }
+      }
+
+      if (indexes.length >= options.trimBySeparator) {
+        slug = slug.substring(0, indexes[options.trimBySeparator - 1]);
       }
     }
 
     return slug;
-  }
-
-  private findIndexes(text: string, letter: string) {
-    return text
-      .split('')
-      .map((c, idx) => {
-        if (c === letter) {
-          return idx;
-        }
-        return -1;
-      })
-      .filter(element => element !== -1);
   }
 
 }

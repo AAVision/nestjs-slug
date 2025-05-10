@@ -19,14 +19,14 @@ $ npm install nestjs-slug --save
 The package consists of two methods:
 
 ```
-generateSlug(text: string, options?: {
-    seperator?: string;
+generate(text: string, options?: {
+    separator?: string;
     lowerCase?: boolean;
     upperCase?: boolean;
     length?: number;
     trim?: boolean;
     timestamp?: boolean;
-    trimBySepator?: number;
+    trimBySeparator?: number;
     removeSpecialCharacters?: boolean;
 }) : string
 
@@ -38,7 +38,7 @@ generateSlug(text: string, options?: {
 ## Examples
 
 importing `SlugService` in `app.service.ts`:
-```
+```bash
   import { Injectable } from '@nestjs/common';
   import { SlugService } from 'nestjs-slug'; <---
 
@@ -51,7 +51,28 @@ importing `SlugService` in `app.service.ts`:
       private slugService: SlugService  <---
     ){}
 
-    this.slug = this.slugService.generateSlug("iphone 14 pro max black")
+    this.slug = this.slugService.generate("iphone 14 pro max black")
+    
+  }
+
+  iphone-14-pro-max-black
+
+```
+
+```bash
+  import { Injectable } from '@nestjs/common';
+  import { SlugService } from 'nestjs-slug'; <---
+
+  @Injectable()
+  export class AppService {
+
+    slug:string = "";
+
+    constructor(
+      private slugService: SlugService  <---
+    ){}
+
+    this.slug = this.slugService.isSlug("iphone-14-pro-max-black") // returns true
     
   }
 ```
