@@ -55,7 +55,7 @@ importing `SlugService` in `app.service.ts`:
     
   }
 
-  iphone-14-pro-max-black
+  // returns iphone-14-pro-max-black
 
 ```
 
@@ -66,13 +66,16 @@ importing `SlugService` in `app.service.ts`:
   @Injectable()
   export class AppService {
 
-    slug:string = "";
+    is_slug:bool = false;
+
 
     constructor(
       private slugService: SlugService  <---
     ){}
 
-    this.slug = this.slugService.isSlug("iphone-14-pro-max-black") // returns true
+    this.is_slug = this.slugService.isSlug("iphone-14-pro-max-black")
+
+    // returns true
     
   }
 ```
